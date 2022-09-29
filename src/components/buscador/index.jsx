@@ -13,13 +13,12 @@ const getCep = async(e, numero) => {
     
     e.preventDefault();
     let url = "https://viacep.com.br/ws/"+numero+"/json/";
-    setEndereco(false);
+    
     await fetch(url)
     .then(res => res.json())
     .then(data => {
         setEndereco(data)
-        console.log(data)
-    }).catch((err) => console.log("erro fetch -> "+err));
+    }).catch(() => setEndereco(false));
    
 }    
 
